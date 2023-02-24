@@ -1,7 +1,7 @@
 
 # ALX SYSTEM ENGINEERING - DEVOPS
 
-This repository contains programs created for the _**ALX Software Engineering** Programs._ I'm Currently sharpening my knowledge and skills of C and shell scripting. Hey you! Come let's do hard things. The following is a specific list of projects :
+This repository contains programs created for the _**ALX Software Engineering** Programs._ I'm Currently sharpening my knowledge and skills in DevOps and System Engineering. Hey Buddy! Come let's do hard things. I am enthusiastic about pushing my limits and taking on challenging tasks. The following are specific list of projects :
 
 - [0x00. Shell - Shell_Basics](https://github.com/Biggestheart/alx-system_engineering-devops/tree/master/0x00-shell_basics)
 - [0x00. Shell - Shell_Permissions](https://github.com/Biggestheart/alx-system_engineering-devops/tree/master/0x00-shell_permissions)
