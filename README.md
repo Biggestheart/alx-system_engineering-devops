@@ -1,6 +1,7 @@
 
 # ALX SYSTEM ENGINEERING - DEVOPS
 
+![undraw_coding_re_iv62.svg](https://user-images.githubusercontent.com/110098940/219949766-01d150a7-a2cf-454d-958a-d61fe3ee7110.png)
 This repository contains programs created for the _**ALX Software Engineering** Programs._ I'm Currently sharpening my knowledge and skills in DevOps and System Engineering. Hey Buddy! Come let's do hard things. I am enthusiastic about pushing my limits and taking on challenging tasks. The following are specific list of projects :
 
 - [0x00. Shell - Shell_Basics](https://github.com/Biggestheart/alx-system_engineering-devops/tree/master/0x00-shell_basics)
