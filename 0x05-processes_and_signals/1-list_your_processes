@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#llist your processes all pids
+
+ps -auxf
