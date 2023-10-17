@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
-# Script that runs whoami command under an used passed
-sudo -u "$1" 'whoami'
+# This Bash_script accepts one_argument, which should_be a username.
+# Runs the 'whoami' command under_the user_passed as an_argument.
+
+# Use 'sudo' to_run 'whoami' as the_specified_user
+sudo -u "$1" whoami
