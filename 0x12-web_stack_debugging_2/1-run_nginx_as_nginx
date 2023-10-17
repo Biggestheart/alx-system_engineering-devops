@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
-# Script that starts nginx as nginx user
-chmod 777 /etc/nginx/nginx.conf
-sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+# Configures Nginx to run_as 'nginx' user_on_port 8080.
+
+# Setting Nginx userr to 'nginx' in_config
 sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
-pkill -9 apache
-su nginx -c "service nginx restart"
+
+# Change_port 80 to 8080 in default_config
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+
+# Update_config file_permissions
+chmod 644 /etc/nginx/nginx.conf
+
+# Terminatting Apache if_running
+pkill apache2
+
+# Starting Nginx w 'nginx' userr
+sudo -u nginx service nginx start
