@@ -1,7 +1,3 @@
 #!/usr/bin/env bash
-<<<<<<< HEAD
-# Tells_Gunicorn to_reload_ gracefully
-=======
-# Tells_Gunicorn_to reload_gracefully
->>>>>>> 1f987cf202c1fb6cd4af37225ec5772279caeba2
-pkill -HUP "$(pgrep gunicorn)"
+# Reload gunicorn instance service
+systemctl status gunicorn | grep PID | cut -d ' ' -f 6 | xargs kill -HUP
