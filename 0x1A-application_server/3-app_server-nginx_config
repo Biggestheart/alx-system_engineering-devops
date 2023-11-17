@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-server {
-    listen 80;
-    server_name your_server_public_ip;
-
-    location /airbnb-dynamic/number_odd_or_even/ {
-        proxy_pass http://127.0.0.1:5001;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-
-    location / {
-        return 404;
-    }
-}
-=======
 ##
 # You should look at the following URL's in order to grasp a solid understanding
 # of Nginx configuration files in order to fully unleash the power of Nginx.
@@ -34,11 +17,6 @@ server {
 ##
 
 # Default server configuration
-#
-#upstream backend_server {
-#	server 172.67.179.206;
-#	server 52.86.102.6:80;
-#}
 #
 server {
 	listen 80 default_server;
@@ -61,48 +39,34 @@ server {
 	# include snippets/snakeoil.conf;
 
 	root /var/www/html;
+	location /hbnb_static {
+		alias /data/web_static/current/;
+	}
 
- 	# Add index.php to the list if you are using PHP
+	location /airbnb-onepage {
+		include proxy_params;
+		proxy_pass http://localhost:5000;
+	}
+
+	location /airbnb-dynamic/number_odd_or_even {
+		include proxy_params;
+		proxy_pass http://localhost:5001/number_odd_or_even;
+	}
+
+	# Add index.php to the list if you are using PHP
 	index index.html index.htm index.nginx-debian.html;
 
-	server_name web-01.donp.tech;
-	try_files $uri $uri/ =404;
+	server_name _;
+	error_page 404 /error404.html;
+	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 
 	location / {
+	 	add_header X-Served-By $hostname;
 		# First attempt to serve request as file, then
 		# as directory, then fall back to displaying a 404.
-		include proxy_params;
-		proxy_pass http://localhost:5003/2-hbnb;
+		try_files $uri $uri/ =404;
 	}
-
-	error_page 404 /404.html;
-
-	add_header X-Serverd-By 'web-01';
-
-	location = /404.html {
-		root /var/www/html;
-		internal;
-	}
-
-	location = /redirect_me {
-		return 301 $scheme://youtube.com/@donphilip85;
-	}
-
-	location = /airbnb-onepage {
-		include proxy_params;
-		proxy_pass http://localhost:5000/airbnb-onepage;
-	}
-
-	location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
-		include proxy_params;
-		proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
-	}
-
-	location /api/ {
-		include proxy_params;
-		proxy_pass http://localhost:5002/api/;
-	}
-
+	
 	# pass PHP scripts to FastCGI server
 	#
 	#location ~ \.php$ {
@@ -120,6 +84,10 @@ server {
 	#location ~ /\.ht {
 	#	deny all;
 	#}
+	#location /redirect_me {
+	#	return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4 ;
+	#}
+	#rewrite ^/redirect_me https://www.youtube.com/watch?v=7VAI73roXaY&t=2005s&ab_channel=LaithAcademy permanent;
 }
 
 
@@ -141,4 +109,3 @@ server {
 #		try_files $uri $uri/ =404;
 #	}
 #}
->>>>>>> 1f987cf202c1fb6cd4af37225ec5772279caeba2
