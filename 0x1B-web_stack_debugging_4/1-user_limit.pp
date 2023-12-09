@@ -1,8 +1,8 @@
-# Increase sytem open files
-exec {'increase_hard':
-command => '/bin/sed -i "s/holberton hard nofile 5/holberton hard nofile 65535/g" /etc/security/limits.conf',
-}
-
-exec {'increase_soft':
-command => '/bin/sed -i "s/holberton soft nofile 4/holberton soft nofile 65535/g" /etc/security/limits.conf',
+# Changes the limitations on the holberton user
+exec { 'change-os-configuration-for-holberton-user':
+  command => "bash -c \"sed -iE 's/^holberton hard nofile \
+5/holberton hard nofile 88888/' /etc/security/limits.conf; \
+sed -iE 's/^holberton soft nofile \
+4/holberton soft nofile 88888/' /etc/security/limits.conf\"",
+  path    => '/usr/bin:/usr/sbin:/bin'
 }
